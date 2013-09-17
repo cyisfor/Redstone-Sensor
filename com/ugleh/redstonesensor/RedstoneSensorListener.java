@@ -269,17 +269,19 @@ public class RedstoneSensorListener implements Listener {
 
 	@EventHandler
 	public void PlayerJoin(PlayerJoinEvent event) {
+        System.err.println("Playjoin");
 		if(RedstoneSensorPlugin.updatechecker){
-		if (event.getPlayer().isOp() && RedstoneSensorPlugin.outdated) {
-			event.getPlayer().sendMessage(
-					ChatColor.DARK_PURPLE + "The version of " + ChatColor.DARK_RED + "Redstone Proximity Sensor" + ChatColor.DARK_PURPLE + " that this server is running is out of date. Please consider updating to the latest version at " + ChatColor.ITALIC + ChatColor.GREEN
-							+ "http://dev.bukkit.org/server-mods/redstonesensor/");
-		}
+            if (event.getPlayer().isOp() && RedstoneSensorPlugin.outdated) {
+                event.getPlayer().sendMessage(
+                        ChatColor.DARK_PURPLE + "The version of " + ChatColor.DARK_RED + "Redstone Proximity Sensor" + ChatColor.DARK_PURPLE + " that this server is running is out of date. Please consider updating to the latest version at " + ChatColor.ITALIC + ChatColor.GREEN
+                                + "http://dev.bukkit.org/server-mods/redstonesensor/");
+            }
 		}
 	}
 
 	@EventHandler(priority = EventPriority.MONITOR)
 	public void PlayerMove(PlayerMoveEvent event) {
+        System.err.println("Playmove");
         Player player = event.getPlayer();
 		Iterator<RedstoneSensor.Torch> it = RedstoneSensor.torchList.iterator();
         while (it.hasNext()) {

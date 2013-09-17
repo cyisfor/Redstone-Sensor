@@ -38,12 +38,13 @@ public class RedstoneSensor {
         return Type.NADA;
     }
 
-    public static class Torch extends Location {
-        public int value;
-        public String owner;
-        public Location l1;
-        public Location l2;
-        public boolean isNot;
+    public static class Torch extends Location, implements Comparable {
+        public final int value;
+        public final String owner;
+        public final Location l1;
+        public final Location l2;
+        public final boolean isNot;
+
         public Torch(boolean isNot, int value, String owner, Location location, Location l1, Location l2) {
             super(location.getWorld(),location.getX(),location.getY(),location.getZ());
             this.isNot = isNot;
@@ -78,6 +79,20 @@ public class RedstoneSensor {
 
             return false;
         }
+        public int compareTo(Object derp) {
+            if(derp instanceof Torch) {
+                Torch other = (Torch) derp;
+                int ret = other.getWorld().getName().compareTo(other.getWorld().getName());
+                if(ret == 0) {
+                    ret = other.getBlockX() - getBlockX()+
+                        other.getBlockY() - getBlockY()+
+                        other.getBlockZ() - getBlockZ();
+                }
+                return ret;
+            }
+            return 1;
+        }
+
         String identifier;
         public String getIdentifier() {
             if(identifier == null) {
