@@ -13,8 +13,8 @@ Dump it in your bukkit plugins folder. Check his place for more docs.
 
 New recipe:
 
-X X X
-X R X = magic custom proximity sensor area defining stick
-X S X
-R = redstone torch
-S = stick
+    X X X
+    X R X = magic custom proximity sensor area defining stick
+    X S X
+    R = redstone torch
+    S = stick
